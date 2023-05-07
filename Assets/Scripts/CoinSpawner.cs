@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 
 public class CoinSpawner : MonoBehaviour
 {
-    public float repeatRate = 1;
+    public float repeatRate = 5;
     private float timer = 0;
     public float height = 5;
     public GameObject prefabCoin;
@@ -27,15 +27,9 @@ public class CoinSpawner : MonoBehaviour
     private void SpawnCoin()
     {
         GameObject newCoin = Instantiate(prefabCoin);
-        newCoin.transform.position = transform.position + new Vector3(1, Random.Range(-height, height), 0);
+        newCoin.transform.position = transform.position + new Vector3(2, Random.Range(-height + 4, height - 4), 0);
     }
     
-    // private void OnTriggerEnter2D(Collider2D other)
-    // {
-    //     if (other.gameObject.CompareTag("Player"))
-    //     {
-    //         Destroy(gameObject);
-    //     }
-    // }
+
 }
 
