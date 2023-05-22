@@ -11,6 +11,7 @@ public class GameManager : Singleton<GameManager>
     public int highestScore;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI highestScoreText;
+    public AudioSource scoreSound;
 
     public void StartGame()
     {
@@ -32,6 +33,12 @@ public class GameManager : Singleton<GameManager>
         highestScore = PlayerPrefs.GetInt ("highestScore", highestScore);
         highestScoreText.text = "HighScore: " + highestScore.ToString();
     }
+
+    public void ShowMenu()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("Menu");
+    }
     public void OnGameOver()
     {
         ShowLoseUI();
@@ -48,5 +55,6 @@ public class GameManager : Singleton<GameManager>
     {
         points++;
         scoreText.text = points.ToString();
+        scoreSound.Play();
     }
 }

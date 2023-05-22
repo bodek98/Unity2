@@ -6,7 +6,7 @@ using UnityEngine;
 public class Coin : MonoBehaviour
 {
     public float speed = 1;
-
+   
     void Update()
     {
         transform.position += Vector3.left * speed * Time.deltaTime;
@@ -15,12 +15,10 @@ public class Coin : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            Destroy(gameObject);
-        }
+        GameManager.Instance.UpdateScore();
+        Destroy(gameObject);
     }
-    
 }
